@@ -163,6 +163,8 @@ Lookup table: concern → repo(s) → spec file(s). Use this to find where to go
 | --- | --- | --- |
 | Shared AI coding skills | lightspeed-team-harness | `AGENTS.md` |
 | Load testing & metrics | ols-load-generator | `README.md` (no `.ai/spec/` yet) |
+| LLM response, retrieval, tool-call, conversation, and agentic workflow evaluation framework | lightspeed-evaluation | `README.md` |
+| Reproducible OpenShift troubleshooting scenarios and OLS eval definitions | troubleshooting-scenarios | `README.md`, `evals/README.md` |
 
 ## Cross-Repo Features
 

@@ -20,6 +20,8 @@ OpenShift Lightspeed (OLS) is an AI-powered assistant for OpenShift. This worksp
 | `lightspeed-otel-collector` | Custom OpenTelemetry collector for OLS observability |
 | `lightspeed-team-harness` | Shared AI coding skills for the team |
 | `ols-load-generator` | Load testing tool for the OLS service |
+| `lightspeed-evaluation` | Evaluation framework for OLS responses and agentic workflows |
+| `troubleshooting-scenarios` | Reproducible OpenShift troubleshooting and evaluation scenarios |
 
 ## Cross-Repo Conventions
 

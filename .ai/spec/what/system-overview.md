@@ -36,6 +36,8 @@ The hub layer for fleet-scale operations. A central hub cluster manages spoke cl
 
  1. **lightspeed-team-harness** — Shared AI coding skills and conventions for the team (dependency updates, CI failure investigation, PR workflows, CVE resolution). Also hosts the event adapter prototype (polls Jira for new bugs, creates AgenticRun CRs for automated triage). Guide: `lightspeed-team-harness/AGENTS.md`; event adapter spec: `lightspeed-team-harness/.ai/spec/what/event-adapter.md`
  2. **ols-load-generator** (Go) — Load testing tool. Measures OLS performance under concurrent query load, scrapes cluster Prometheus metrics. Guide: `ols-load-generator/README.md`
+ 3. **lightspeed-evaluation** (Python) — Evaluation framework for LLM applications, including OLS responses, context retrieval, tool calls, conversations, and agentic workflows. Guide: `lightspeed-evaluation/README.md`
+ 4. **troubleshooting-scenarios** — Reproducible OpenShift fault scenarios for OLS evaluations, manual troubleshooting, and demos. Scenarios include setup/cleanup scripts and Classic/Agentic evaluation definitions. Guide: `troubleshooting-scenarios/README.md`
 
 ## Cross-Repo Features
 

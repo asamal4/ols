@@ -38,10 +38,20 @@ REPOS=(
   lightspeed-otel-collector
   lightspeed-team-harness
   ols-load-generator
+  lightspeed-evaluation
+  troubleshooting-scenarios
 )
 
 ORG="openshift"
 TARGET_DIR="${1:-$(pwd)}"
+
+repo_org() {
+  case "$1" in
+    lightspeed-evaluation) echo "lightspeed-core" ;;
+    troubleshooting-scenarios) echo "rhobs" ;;
+    *) echo "${ORG}" ;;
+  esac
+}
 
 # GIT_ASKPASS lets git fetch the password via a helper script rather than
 # prompting interactively (which would hang in a pod) or embedding the token
@@ -61,8 +71,9 @@ for repo in "${REPOS[@]}"; do
     echo "  ✓ ${repo} (already exists, skipping)"
     skip=$((skip + 1))
   else
-    echo "  ⏳ ${repo}"
-    git clone --quiet --depth=1 "https://oauth2@github.com/${ORG}/${repo}.git" "${dest}"
+    source_org=$(repo_org "${repo}")
+    echo "  ⏳ ${repo} (${source_org})"
+    git clone --quiet --depth=1 "https://oauth2@github.com/${source_org}/${repo}.git" "${dest}"
     echo "  ✓ ${repo}"
     ok=$((ok + 1))
   fi
