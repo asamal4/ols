@@ -44,6 +44,12 @@ Pull all repos:
 
 Run `./setup.sh help` for the complete command list and examples.
 
+Sync fork and local default branches from upstream (fast-forward only):
+
+```bash
+./setup.sh sync-forks [repo-name]
+```
+
 ## Specs
 
 Cross-repo specifications live in `.ai/spec/`. Start with [`.ai/spec/README.md`](.ai/spec/README.md) for the product overview and reading guide. Use [`.ai/spec/how/repo-map.md`](.ai/spec/how/repo-map.md) to find which repo and spec file to update for a given concern.
