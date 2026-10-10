@@ -19,6 +19,8 @@ Cross-repo workspace for OpenShift Lightspeed — shared specs, routing, and AI 
 | [lightspeed-otel-collector](https://github.com/openshift/lightspeed-otel-collector) | Custom OpenTelemetry collector for OLS observability |
 | [lightspeed-team-harness](https://github.com/openshift/lightspeed-team-harness) | Shared AI coding skills for the team |
 | [ols-load-generator](https://github.com/openshift/ols-load-generator) | Load testing tool for the OLS service |
+| [lightspeed-evaluation](https://github.com/lightspeed-core/lightspeed-evaluation) | Evaluation framework for OLS responses, context, tool calls, and agentic workflows |
+| [troubleshooting-scenarios](https://github.com/rhobs/troubleshooting-scenarios) | Reproducible OpenShift fault scenarios with OLS evaluation definitions |
 
 ## Setup
 

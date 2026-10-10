@@ -15,18 +15,28 @@ REPOS=(
   lightspeed-otel-collector
   lightspeed-team-harness
   ols-load-generator
+  lightspeed-evaluation
+  troubleshooting-scenarios
 )
 
 ORG="openshift"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+repo_org() {
+  case "$1" in
+    lightspeed-evaluation) echo "lightspeed-core" ;;
+    troubleshooting-scenarios) echo "rhobs" ;;
+    *) echo "${ORG}" ;;
+  esac
+}
 
 usage() {
   cat <<EOF
 Usage: $(basename "$0") [command]
 
 Commands:
-  clone          Clone all repos from openshift/ org (default)
-  clone-fork     Clone from your fork and add openshift/ as upstream
+  clone          Clone all repos from configured upstream orgs (default)
+  clone-fork     Clone from your fork and add each repo's upstream
   pull           Pull --ff-only on all cloned repos
   status         Show git status for all cloned repos
   help           Show this help
@@ -35,8 +45,8 @@ Options (for clone-fork):
   GITHUB_USER    Set via env var or pass as: clone-fork <user>
 
 Examples:
-  ./setup.sh                          # Clone all repos from openshift/
-  ./setup.sh clone-fork myuser        # Clone from your fork, add upstream
+  ./setup.sh                          # Clone all repos from configured orgs
+  ./setup.sh clone-fork myuser        # Clone from your fork, add per-repo upstreams
   GITHUB_USER=myuser ./setup.sh clone-fork
   ./setup.sh pull                     # Fast-forward pull all repos
   ./setup.sh status                   # Quick status check across all repos
@@ -44,13 +54,15 @@ EOF
 }
 
 clone() {
-  echo "Cloning repos from ${ORG}/..."
+  echo "Cloning repos from configured GitHub orgs..."
   for repo in "${REPOS[@]}"; do
     if [ -d "${SCRIPT_DIR}/${repo}" ]; then
       echo "  ✓ ${repo} (already exists, skipping)"
     else
-      echo "  ⏳ ${repo}"
-      git clone --quiet "git@github.com:${ORG}/${repo}.git" "${SCRIPT_DIR}/${repo}"
+      local source_org
+      source_org=$(repo_org "${repo}")
+      echo "  ⏳ ${repo} (${source_org})"
+      git clone --quiet "git@github.com:${source_org}/${repo}.git" "${SCRIPT_DIR}/${repo}"
       echo "  ✓ ${repo}"
     fi
   done
@@ -66,16 +78,18 @@ clone_fork() {
     exit 1
   fi
 
-  echo "Cloning repos from ${user}/ (upstream: ${ORG}/)..."
+  echo "Cloning repos from ${user}/ (upstream org configured per repo)..."
   for repo in "${REPOS[@]}"; do
     if [ -d "${SCRIPT_DIR}/${repo}" ]; then
       echo "  ✓ ${repo} (already exists, skipping)"
     else
       echo "  ⏳ ${repo}"
+      local upstream_org
+      upstream_org=$(repo_org "${repo}")
       git clone --quiet "git@github.com:${user}/${repo}.git" "${SCRIPT_DIR}/${repo}"
-      git -C "${SCRIPT_DIR}/${repo}" remote add upstream "git@github.com:${ORG}/${repo}.git"
+      git -C "${SCRIPT_DIR}/${repo}" remote add upstream "git@github.com:${upstream_org}/${repo}.git"
       git -C "${SCRIPT_DIR}/${repo}" fetch --quiet upstream
-      echo "  ✓ ${repo} (origin=${user}, upstream=${ORG})"
+      echo "  ✓ ${repo} (origin=${user}, upstream=${upstream_org})"
     fi
   done
   echo "Done. ${#REPOS[@]} repos ready."

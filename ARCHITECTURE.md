@@ -25,7 +25,7 @@ Supporting components:
 - **OTel Collector** — custom OpenTelemetry collector for fleet telemetry forwarding and templog audit storage in PostgreSQL.
 - **Alerts adapter** — bridges AlertManager to the agentic system by polling firing alerts, deduplicating, and creating AgenticRun CRs.
 
-The system spans 13 repositories organized into three layers (classic, agentic, multicluster) plus shared tooling.
+The workspace tracks 15 repositories: 11 product components across Classic, Agentic, and Multicluster layers, plus four shared tooling repositories.
 
 > For machine-readable behavioral specs, see [`.ai/spec/`](.ai/spec/README.md). This document is a human-facing overview.
 >
@@ -460,6 +460,8 @@ graph LR
 | `lightspeed-otel-collector` | Go | Custom OTel Collector (OCB) — templog audit storage + fleet telemetry |
 | `lightspeed-team-harness` | — | Shared AI coding skills |
 | `ols-load-generator` | Go | Load testing tool |
+| `lightspeed-evaluation` | Python | Evaluation framework for Classic and Agentic OLS workflows |
+| `troubleshooting-scenarios` | YAML, shell | Reproducible OpenShift faults and OLS evaluation scenarios |
 
 ---
 
