@@ -25,7 +25,7 @@ OpenShift Lightspeed (OLS) is an AI-powered assistant for OpenShift. This worksp
 
 ### Jira
 - Project key: **OLS** on `redhat.atlassian.net`
-- All commit messages and PR titles start with `OLS-XXXX`
+- All commit messages and PR titles start with `OLS-XXXX:`
 
 ### Git Workflow
 All repos use a **fork-based workflow**:
@@ -56,7 +56,7 @@ After brainstorming writes and commits a spec change, **auto-push and open a PR*
 6. Open the PR with the `spec-only` label:
    ```
    gh pr create --repo openshift/ols --head <fork-user>:<branch> --base main \
-     --title "OLS-XXXX <summary>" --body "Spec-only change, pre-push reviewed." \
+     --title "OLS-XXXX: <summary>" --body "Spec-only change, pre-push reviewed." \
      --label kind/design
    ```
 7. Tell the user the PR is ready for review and provide the URL.
