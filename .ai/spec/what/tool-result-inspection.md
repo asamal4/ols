@@ -10,6 +10,14 @@ This document is the normative source for shared tool-result inspection policy a
 
 The repositories can deliver the coordinated change together. Conformance does not require this specification to merge before the repository-specific changes.
 
+## Single-Harness Migration [PLANNED: OLS-4434]
+
+OLS-4434 selects DeepAgents as the only agentic sandbox harness for all existing provider routes, including Google and OpenAI models. The sandbox-owned target contract is `lightspeed-agentic-sandbox/.ai/spec/what/provider-contract.md` rules 50–67; its decision is `lightspeed-agentic-sandbox/.ai/spec/decisions/0003-single-deepagents-harness.md`.
+
+Every migrated route MUST satisfy this document's DeepAgents inspection contract, independent of model family, using its active model/endpoint/credentials. The existing inspection toggle and fixed failure behavior remain unchanged; disabling inspection does not remove tool-output wrapping or trust instructions. Statements below that Gemini ADK and OpenAI Agents remain unchanged refer to legacy harness paths before retirement, not a permanent exemption for Google/OpenAI models once they use DeepAgents. The final runtime retains neither legacy harness, and adds no unguarded-path warning or alternate safety configuration.
+
+This transition does not change classifier semantics, retries/chunking, native tool-source evidence retention, normalized result-event suppression, Classic behavior, authorization, approval, or RBAC. DeepAgents tools/skills and admitted MCP tools replace the retired harness tool systems; ADK-hosted Search/URL Context are not required. Coverage and offline/live retirement evidence remain owned by the sandbox spec; this shared-policy update does not claim implementation or evaluation results.
+
 ## Scope
 
 1. [PLANNED: OLS-3928] Classic OLS MUST inspect results and errors from every tool in its centralized tool loop.
