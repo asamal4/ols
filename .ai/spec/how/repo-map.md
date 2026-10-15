@@ -106,6 +106,7 @@ Lookup table: concern → repo(s) → spec file(s). Use this to find where to go
 | AWS Bedrock static-key / STS assume-role credential resolution | lightspeed-agentic-sandbox | [OLS-4092] `what/configuration.md` (rule 9b), `what/provider-contract.md` (rule 39), `how/provider-architecture.md`; validation in agentic-operator `what/crd-api.md` (rule 21b); ADR `decisions/0041-sandbox-sdk-delegated-tokens.md`. Anthropic-on-Bedrock model path unchanged. |
 | Health probes | lightspeed-agentic-sandbox | `what/health-probes.md` |
 | Provider architecture (adapters) | lightspeed-agentic-sandbox | `how/provider-architecture.md` |
+| Single DeepAgents harness, all existing provider routes | lightspeed-agentic-sandbox | [PLANNED: OLS-4434] child `what/provider-contract.md` rules 50–67, `what/configuration.md`, `how/provider-architecture.md`, `decisions/0003-single-deepagents-harness.md`; parent `what/tool-result-inspection.md`, `what/agentic-data-collection.md` retain shared safety/evidence and telemetry compatibility authority |
 | Product trace instrumentation (GenAI semconv `schema_url` 1.41.0; successful raw tool results remain evidence even if inspection rejects them) | lightspeed-agentic-sandbox | [PLANNED: OLS-4246] parent [collection contract](../what/agentic-data-collection.md); `what/data-collection.md`, `what/audit-logging.md`, `what/provider-contract.md`, `what/run-api.md` |
 
 ## Agentic OLS — Alerts Adapter
